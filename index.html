@@ -6,10 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { text-align: center; padding-top: 60px; font-family: sans-serif; }
-    .tip { color: #d33; font-size: 18px; margin-top: 30px; }
+    .tip { 
+      color: #d33; 
+      font-size: 18px; 
+      margin-top: 30px; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 5px;
+    }
     .copy-link { font-size: 17px; color: #0366d6; word-break: break-all; margin: 20px auto; width: 90%; border: 1px dashed #ccc; padding: 12px; border-radius: 10px; background: #f8f8f8;}
     .btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; }
-    .dot-black { color: #000; font-size: 32px; vertical-align: middle; font-weight: bold; }
+    .dot-black { color: #000; font-size: 32px; font-weight: bold; line-height: 1; display: inline-block; vertical-align: middle;}
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -26,11 +34,11 @@
 </head>
 <body>
   <div id="tip-content" style="display:none;">
-
     <div class="tip">
-      点击右上角 <b><span class="dot-black"> ... </span></b>选择 <b>在浏览器中打开</b>
+      点击右上角 
+      <b><span class="dot-black">...</span></b>
+      选择 <b>在浏览器中打开</b>
     </div>
-  
   </div>
   <script>
   function copyLink() {
