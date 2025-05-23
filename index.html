@@ -17,34 +17,31 @@
       width: 100%;
     }
     .copy-link { font-size: 17px; color: #0366d6; word-break: break-all; margin: 20px auto; width: 90%; border: 1px dashed #ccc; padding: 12px; border-radius: 10px; background: #f8f8f8;}
-    .btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; }
+    .btn, .enter-btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; cursor: pointer; }
     .dot-black { color: #000; font-size: 18px; font-weight: bold; line-height: 1; display: inline-block; vertical-align: middle;}
   </style>
   <script>
-    // 提前执行跳转逻辑，提升流畅度
+    // 判断是否微信内置浏览器
     (function() {
       var ua = navigator.userAgent.toLowerCase();
       var isWeixin = ua.indexOf('micromessenger') !== -1;
-      if (!isWeixin) {
-        // 直接跳转，避免内容闪现
-        location.replace("https://libretv-2b7.pages.dev");
-      } else {
-        // 微信内，页面内容显示
-        document.addEventListener('DOMContentLoaded', function() {
-          document.body.style.display = '';
-          document.getElementById('tip-content').style.display = 'block';
-        });
-      }
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.style.display = '';
+        document.getElementById('browser-content').style.display = 'block';
+      });
     })();
+    // 跳转函数
+    function enterSite() {
+      window.location.href = "https://libretv-2b7.pages.dev";
+    }
   </script>
 </head>
 <body style="display:none;">
-  <div id="tip-content" style="display:none;">
+  <div id="browser-content" style="display:none;">
     <div class="tip">
-      点击右上角 
-      <b><span class="dot-black">···</span></b>
-      选择 <b>在浏览器中打开</b>
+      
     </div>
+    <button class="enter-btn" onclick="enterSite()">点击进入</button>
   </div>
   <script>
   function copyLink() {
