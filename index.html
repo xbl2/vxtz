@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>页面提示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { text-align: center; padding-top: 60px; font-family: sans-serif; }
+    .tip { color: #d33; font-size: 18px; margin-top: 30px; }
+    .copy-link { font-size: 17px; color: #0366d6; word-break: break-all; margin: 20px auto; width: 90%; border: 1px dashed #ccc; padding: 12px; border-radius: 10px; background: #f8f8f8;}
+    .btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; }
+  </style>
+</head>
+<body>
+  <h2>请在浏览器中打开本页面</h2>
+  <div class="tip">
+    如在微信内，请点击右上角 <b>...（更多）</b>，选择 <b>在浏览器中打开</b>
+  </div>
+  <div class="copy-link" id="copyText">
+    https://libretv-2b7.pages.dev
+  </div>
+  <button class="btn" onclick="copyLink()">复制链接</button>
+  <script>
+  function copyLink() {
+    const text = document.getElementById('copyText').innerText;
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(text);
+      alert('链接已复制，请粘贴到浏览器打开');
+    }else{
+      // 兼容旧浏览器
+      const input = document.createElement('input');
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      alert('链接已复制，请粘贴到浏览器打开');
+    }
+  }
+  </script>
+</body>
+</html>
