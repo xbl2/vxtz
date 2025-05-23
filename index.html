@@ -10,6 +10,17 @@
     .copy-link { font-size: 17px; color: #0366d6; word-break: break-all; margin: 20px auto; width: 90%; border: 1px dashed #ccc; padding: 12px; border-radius: 10px; background: #f8f8f8;}
     .btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; }
   </style>
+  <script>
+    // 如果不是在微信内置浏览器中，则自动跳转
+    document.addEventListener('DOMContentLoaded', function() {
+      var ua = navigator.userAgent.toLowerCase();
+      // 判断是否为微信内置浏览器
+      var isWeixin = ua.indexOf('micromessenger') !== -1;
+      if (!isWeixin) {
+        window.location.href = "https://4728.me";
+      }
+    });
+  </script>
 </head>
 <body>
   <h2>请在浏览器中打开本页面</h2>
@@ -17,7 +28,7 @@
     如在微信内，请点击右上角 <b>...（更多）</b>，选择 <b>在浏览器中打开</b>
   </div>
   <div class="copy-link" id="copyText">
-    https://libretv-2b7.pages.dev
+    https://4728.me
   </div>
   <button class="btn" onclick="copyLink()">复制链接</button>
   <script>
