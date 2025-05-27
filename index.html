@@ -28,22 +28,23 @@
       align-items: center;
       justify-content: center;
     }
-    .icon {
-      width: 80px;
-      margin-bottom: 20px;
-    }
     .tip {
-      font-size: 1.15em;
+      font-size: 1.5em;
       color: #f38a00;
-      margin-bottom: 8px;
       font-weight: bold;
       text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .tip .dots {
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1em;
+      letter-spacing: 0.2em;
+      padding: 0 2px;
     }
     .url {
       margin-top: 12px;
-      background: #f4f4f6;
-      border-radius: 6px;
-      padding: 10px 0;
       color: #3360ff;
       font-weight: 500;
       word-break: break-all;
@@ -51,12 +52,16 @@
       letter-spacing: 1px;
       user-select: all;
       text-align: center;
+      background: none;
+      border-radius: 0;
+      padding: 0;
     }
   </style>
 </head>
 <body>
-    <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/external-link.png" alt="外部浏览器">
-    <div class="tip">点击右上角 <b>···</b> 选择 <b>浏览器打开</b></div>
+    <div class="tip">
+      点击右上角 <span class="dots">···</span> 选择 浏览器打开
+    </div>
     <div class="url">https://luoxb.pages.dev</div>
 </body>
 </html>
