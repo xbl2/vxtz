@@ -2,50 +2,70 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>请复制链接到浏览器打开</title>
+  <title>请用浏览器打开</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { background: #111; color: #fff; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; text-align: center; padding-top: 100px;}
-    .tip { background: #222; padding: 2em 1em; border-radius: 1em; display: inline-block; }
-    .copy-box { word-break: break-all; background: #333; color: #fff; padding: 1em; border-radius: 6px; margin: 1.5em 0; font-size: 1.2em; }
-    button { background: #1aad19; border: none; color: #fff; padding: 0.7em 2em; font-size: 1em; border-radius: 5px; cursor: pointer; }
-    button:active { background: #179b16; }
-  </style>
   <script>
-    // 非微信内自动跳转
-    if(!/micromessenger/i.test(navigator.userAgent)){
+    // 判断是否微信内置浏览器
+    function isWeChatBrowser() {
+      var ua = navigator.userAgent.toLowerCase();
+      return ua.indexOf('micromessenger') !== -1;
+    }
+    if (!isWeChatBrowser()) {
+      // 非微信浏览器自动跳转
       window.location.href = "https://luoxb.pages.dev";
     }
   </script>
+  <style>
+    body {
+      background: #f7f7f7;
+      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      max-width: 90vw;
+      margin: 16px;
+      text-align: center;
+    }
+    .icon {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+    .tip {
+      font-size: 1.15em;
+      color: #f38a00;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .url {
+      margin-top: 12px;
+      background: #f4f4f6;
+      border-radius: 6px;
+      padding: 10px 0;
+      color: #3360ff;
+      font-weight: 500;
+      word-break: break-all;
+      font-size: 1em;
+      letter-spacing: 1px;
+      user-select: all;
+    }
+  </style>
 </head>
 <body>
-  <div class="tip">
-    <h2>请复制链接到浏览器打开</h2>
+  <div class="container">
+    <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/external-link.png" alt="外部浏览器">
+    <div class="tip">点击右上角 <b>···</b> 选择 <b>浏览器打开</b></div>
+    <div class="url">https://luoxb.pages.dev</div>
   </div>
-  <script>
-    function copyToClipboard() {
-      const text = document.getElementById('copyLink').innerText;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function() {
-          alert('已复制链接！请在浏览器粘贴打开');
-        }, function() {
-          alert('复制失败，请手动长按链接复制');
-        });
-      } else {
-        // 兼容旧浏览器
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-          document.execCommand('copy');
-          alert('已复制链接！请在浏览器粘贴打开');
-        } catch {
-          alert('复制失败，请手动长按链接复制');
-        }
-        document.body.removeChild(textarea);
-      }
-    }
-  </script>
 </body>
 </html>
