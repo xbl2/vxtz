@@ -39,9 +39,9 @@
     .tip .dots {
       color: #000;
       font-weight: bold;
-      font-size: 0.85em;
-      letter-spacing: 0em; /* 缩窄间距 */
-      padding: 0px;         /* 缩小内边距 */
+      font-size: 0.7em;
+      letter-spacing: 0.02em;
+      padding: 0 1px;
       vertical-align: middle;
     }
     .url {
@@ -57,6 +57,16 @@
       border-radius: 0;
       padding: 0;
     }
+    .footer-img {
+      width: 120px;
+      max-width: 60vw;
+      margin: 40px auto 16px auto;
+      display: block;
+      opacity: 0.8;
+    }
+    .footer-space {
+      flex: 1 1 auto;
+    }
   </style>
 </head>
 <body>
@@ -64,5 +74,7 @@
       点击右上角 <span class="dots">···</span> 选择 浏览器打开
     </div>
     <div class="url">https://luoxb.pages.dev</div>
+    <div class="footer-space"></div>
+    <img class="footer-img" src="https://raw.githubusercontent.com/xbl2/TV/refs/heads/main/image/logo-black.png" alt="logo">
 </body>
 </html>
