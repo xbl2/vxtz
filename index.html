@@ -5,12 +5,9 @@
   <title>LibreTV - 免费在线视频搜索与观看平台</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 通用网页图标 -->
-  <link rel="icon" href="./jiaopin.png" type="image/png">
-  <!-- 苹果设备添加到主屏幕的图标，推荐180x180尺寸，如没有也可用300x300，但需保证图片无透明区域 -->
-  <link rel="apple-touch-icon" sizes="180x180" href="./jiaopin.png">
-  <!-- 你也可以增加多尺寸支持（可选） -->
-  <!-- <link rel="apple-touch-icon" sizes="152x152" href="./jiaopin-152.png"> -->
-  <!-- <link rel="apple-touch-icon" sizes="120x120" href="./jiaopin-120.png"> -->
+<link rel="icon" href="./jiaopin.png" type="image/png">
+<!-- 苹果设备添加到主屏幕的图标 -->
+<link rel="apple-touch-icon" href="./jiaopin.png">
   <style>
     body {
       background: #f7f7f7;
@@ -65,16 +62,28 @@
     .link-entry {
       margin-top: 30px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
     }
-    .link-entry a {
-      color: #3360ff;
+    .orange-btn {
+      display: inline-block;
+      background: #f38a00;
+      color: #fff;
       font-size: 1.15em;
-      text-decoration: none; /* 取消下划线 */
       font-weight: bold;
-      transition: color 0.2s;
+      padding: 12px 36px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(243, 138, 0, 0.1);
     }
-    .link-entry a:hover {
-      color: #f38a00;
+    .orange-btn:hover {
+      background: #ffad3a;
+      color: #fff;
     }
     .footer-space {
       flex: 1 1 auto;
@@ -88,10 +97,9 @@
     </div>
     <div class="url"></div>
     <div class="link-entry">
-  <a href="https://001.4728.me" target="_blank">①点击进入</a>
-  <br><br>
-  <a href="https://002.4728.me" target="_blank">②点击进入</a>
-</div>
+      <a href="https://001.4728.me" target="_blank" class="orange-btn">①点击进入</a>
+      <a href="https://002.4728.me" target="_blank" class="orange-btn">②点击进入</a>
+    </div>
     <div class="footer-space"></div>
 </body>
 </html>
