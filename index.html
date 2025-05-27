@@ -2,64 +2,58 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>页面提示</title>
+  <title>请复制链接到浏览器打开</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { text-align: center; padding-top: 60px; font-family: sans-serif; }
-    .tip { 
-      color: #d33; 
-      font-size: 18px; 
-      margin-top: 30px; 
-      display: flex; 
-      justify-content: center;   /* 水平居中 */
-      align-items: center;       /* 垂直居中 */
-      gap: 5px;
-      width: 100%;
-    }
-    .copy-link { font-size: 17px; color: #0366d6; word-break: break-all; margin: 20px auto; width: 90%; border: 1px dashed #ccc; padding: 12px; border-radius: 10px; background: #f8f8f8;}
-    .btn, .enter-btn { margin-top: 25px; font-size: 19px; padding: 13px 35px; cursor: pointer; }
-    .dot-black { color: #000; font-size: 18px; font-weight: bold; line-height: 1; display: inline-block; vertical-align: middle;}
+    body { background: #111; color: #fff; font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; text-align: center; padding-top: 100px;}
+    .tip { background: #222; padding: 2em 1em; border-radius: 1em; display: inline-block; }
+    .copy-box { word-break: break-all; background: #333; color: #fff; padding: 1em; border-radius: 6px; margin: 1.5em 0; font-size: 1.2em; }
+    button { background: #1aad19; border: none; color: #fff; padding: 0.7em 2em; font-size: 1em; border-radius: 5px; cursor: pointer; }
+    button:active { background: #179b16; }
   </style>
   <script>
-    // 判断是否微信内置浏览器
-    (function() {
-      var ua = navigator.userAgent.toLowerCase();
-      var isWeixin = ua.indexOf('micromessenger') !== -1;
-      document.addEventListener('DOMContentLoaded', function() {
-        document.body.style.display = '';
-        document.getElementById('browser-content').style.display = 'block';
-      });
-    })();
-    // 跳转函数
-    function enterSite() {
-      window.location.href = "https://luoxb.pages.dev/";
+    // 非微信内自动跳转
+    if(!/micromessenger/i.test(navigator.userAgent)){
+      window.location.href = "https://luoxb.pages.dev";
     }
   </script>
 </head>
-<body style="display:none;">
-  <div id="browser-content" style="display:none;">
-    <div class="tip">
-      
-    </div>
-    <button class="enter-btn" onclick="enterSite()">点击进入</button>
+<body>
+  <div class="tip">
+    <h2>请复制链接到浏览器打开</h2>
+    <p>微信/QQ内暂无法访问本站，请长按下方链接复制，然后在手机浏览器中粘贴访问：</p>
+    <div class="copy-box" id="copyLink">https://libretv-2b7.pages.dev</div>
+    <button onclick="copyToClipboard()">一键复制链接</button>
+    <p style="margin-top:1em;color:#aaa;font-size:0.95em;">
+      如何操作：<br>
+      1. 长按上方链接选择“复制”<br>
+      2. 打开手机浏览器，粘贴并访问
+    </p>
   </div>
   <script>
-  function copyLink() {
-    const text = document.getElementById('copyText').innerText;
-    if(navigator.clipboard){
-      navigator.clipboard.writeText(text);
-      alert('链接已复制，请粘贴到浏览器打开');
-    }else{
-      // 兼容旧浏览器
-      const input = document.createElement('input');
-      input.value = text;
-      document.body.appendChild(input);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      alert('链接已复制，请粘贴到浏览器打开');
+    function copyToClipboard() {
+      const text = document.getElementById('copyLink').innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          alert('已复制链接！请在浏览器粘贴打开');
+        }, function() {
+          alert('复制失败，请手动长按链接复制');
+        });
+      } else {
+        // 兼容旧浏览器
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          alert('已复制链接！请在浏览器粘贴打开');
+        } catch {
+          alert('复制失败，请手动长按链接复制');
+        }
+        document.body.removeChild(textarea);
+      }
     }
-  }
   </script>
 </body>
 </html>
